@@ -254,7 +254,7 @@ u {
  +------------------------------------------------------------------------------
  */
   a {
-	color:#5d5d5e;
+	color:#5d1d2e;
 	transition:all 0.3s ease-in-out 0s;
 }
 a:hover {
@@ -628,6 +628,7 @@ body {
 	margin:0 15px;
 }
 .page2 li p {
+	font-size:14px;
 	margin-top:20px;
 	line-height:24px;
 }
@@ -643,7 +644,7 @@ body {
 }
 .page3 .head {
 	position:relative;
-	padding-left:350px;
+	padding-left:200px;
 	-webkit-transition:all 0.5s;
 	-moz-transition:all 0.5s;
 	-o-transition:all 0.5s;
@@ -679,7 +680,7 @@ body {
 	-ms-opacity:1;
 }
 .page3 .head .nav {
-	padding-top:30px;
+	padding-top:20px;
 }
 .page3 .head .nav li {
 	display:inline;
@@ -999,6 +1000,7 @@ body {
 }
 .page5 .contact_us {
 	float:left;
+	width:50%;
 }
 .page5 .contact_us p {
 	font-size:16px;
@@ -1024,7 +1026,11 @@ body {
 }
 .page5 .baidu_map {
 	float:right;
-	width:52%;
+	width:50%;
+}
+.page5 .baidu_map p {
+	font-size:16px;
+	margin-top:12px;
 }
 .flink {
 	background:#202020;
