@@ -254,7 +254,7 @@ u {
  +------------------------------------------------------------------------------
  */
   a {
-	color:#5d1d2e;
+	color:#202020;
 	transition:all 0.3s ease-in-out 0s;
 }
 a:hover {
@@ -998,6 +998,12 @@ body {
 	background:url(../images/bg_page5.jpg) repeat center;
 	height:900px;
 }
+.page5 .wrapper {
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+}
 .page5 .contact_us {
 	float:left;
 	width:50%;
@@ -1005,6 +1011,7 @@ body {
 .page5 .contact_us p {
 	font-size:16px;
 	margin-top:12px;
+	font-weight:bold;
 }
 .page5 .contact_us p span {
 	font-size:12px;
@@ -1031,6 +1038,7 @@ body {
 .page5 .baidu_map p {
 	font-size:16px;
 	margin-top:12px;
+	font-weight:bold;
 }
 .flink {
 	background:#202020;
