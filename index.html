@@ -1,322 +1,1349 @@
 <!DOCTYPE html>
-<html class="desktop fp-enabled" style="overflow: hidden; height: 100%;">
-
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Djaranetwork Service Pty Ltd</title>
-    <meta name="keywords" content="" />
-    <meta name="renderer" content="webkit" />
-    <meta name="description" content="" />
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css" />
-	<link rel="stylesheet" href="css/jquery.fullPage.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业名称 - 专业解决方案提供商</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #ff6600;
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+            --gray-color: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e65c00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* 轮播图 */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .slide h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slide p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 2;
+        }
+        
+        .slider-nav span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-nav span.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+        
+        /* 服务区域 */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* 关于我们 */
+        .about {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .about-stats {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 40px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-text {
+            color: var(--gray-color);
+            font-size: 14px;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 团队 */
+        .team {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .member-info p {
+            color: var(--secondary-color);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* 客户评价 */
+        .testimonials {
+            padding: 100px 0;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .client-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .client-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .client-company {
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-nav span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-nav span.active {
+            background-color: var(--primary-color);
+            transform: scale(1.3);
+        }
+        
+        /* 联系我们 */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--gray-color);
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 30px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .slide h1 {
+                font-size: 36px;
+            }
+            
+            .slide p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .slide h1 {
+                font-size: 28px;
+            }
+            
+            .slide p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+            
+            .stat-item {
+                padding: 10px;
+            }
+            
+            .stat-number {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
-
-<body class="fp-viewing-news" style="overflow: hidden; height: 100%;">
-    <div class="header gb-header show">
-        <div class="logo">
-            <a href="index.html#hero">
-                <img src="images/logo.png" style="display: block" height="40" />
+<body>
+    <!-- 头部导航 -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-building"></i>
+                <span>企业名称</span>
             </a>
-        </div>
-        <div class="nav">
-            <ul>
-                <li><a href="index.html#hero"><span>HOME</span></a>
-                </li>
-                <li><a href="index.html#services"><span>CASES</span></a>
-                </li>
-                <li><a href="index.html#cases"><span>ABOUT</span></a>
-                </li>
-                <li><a href="index.html#news"><span>CONTACT</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="page-wrap fullpage-wrapper" style="height: 100%; position: relative; touch-action: none; transform: translate3d(0px, -2250px, 0px); transition: all 700ms ease 0s;">
-       <!-- <div class="section page1">
-		
-			<div class="slide">
-			  <img src="images/bg_page5.jpg">
-			</div>
-			<div class="slide">
-			  <img src="images/bg_page3.jpg">
-			</div>
-
-		</div>
-       -->
-        <div class="section page2 fp-section" data-anchor="services" style="height: 750px;">
-            <div class="wrapper">
+            <nav id="nav">
                 <ul>
-                    <li class="l1">
-                        <div class="bg">
-                        </div>
-                        <div class="wrap">
-                            <h2>Experienced & Certified Technicians</h2> 
-                            <dl>
-                                <dd>
-                                    <img src="images/img9.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img10.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img11.png" />
-                                </dd>
-                            </dl>
-                            <p class="desc">
-								Our team consists of certified fibre splicing specialists, telecom technicians and field engineers with over 10 years of average industry experience. We are fully trained and familiar with the operational standards of major NBN partners.
-							</p>
-                        </div>
-                    </li>
-                    <li class="l2">
-                        <div class="bg">
-                        </div>
-                        <div class="wrap">
-                            <h2>Proven Project Execution Capability</h2> 
-                            <dl>
-                                <dd>
-                                    <img src="images/img12.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img13.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img14.png" />
-                                </dd>
-                            </dl>
-                            <p class="desc">
-                                We have successfully delivered a wide range of NBN-aligned projects across multiple states and work with established service providers including Opticomm, Superloop, Lightning Broadband, and Genus.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="l3">
-                        <div class="bg">
-                        </div>
-                        <div class="wrap">
-                            <h2>Rapid Nationwide Deployment</h2> 
-                            <dl>
-                                <dd>
-                                    <img src="images/img15.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img16.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img17.png" />
-                                </dd>
-                            </dl>
-                            <p class="desc">
-                                We offer full Australia-wide coverage with responsive project mobilization. Our 24-hour technical support structure enables rapid deployment for urgent activations, maintenance, or troubleshooting.
-                            </p>
-                        </div>
-                    </li>
-                    <li class="l4">
-                        <div class="bg">
-                        </div>
-                        <div class="wrap">
-                            <h2>Compliance and Safety Assured</h2> 
-                            <dl>
-                                <dd>
-                                    <img src="images/img18.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img19.png" />
-                                </dd>
-                                <dd>
-                                    <span></span>
-                                </dd>
-                                <dd>
-                                    <img src="images/img20.png" />
-                                </dd>
-                            </dl>
-                            <p class="desc">
-								We strictly adhere to NBN Co and tier-1 contractor standards. We hold full Public Liability Insurance, Workers Compensation, and all required certifications to guarantee fully compliant and auditable project delivery.
-							</p>
-                        </div>
-                    </li>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#services">服务</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#team">团队</a></li>
+                    <li><a href="#testimonials">客户评价</a></li>
+                    <li><a href="#contact">联系我们</a></li>
                 </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
-        <div class="section page3 fp-section" data-anchor="cases" style="height: 750px;">
-            <div class="wrapper" style="padding: 0 5%;">
-                <div class="head">
-                    <div class="img">
-                        <img src="images/img21.png" />
+    </header>
+
+    <!-- 轮播图 -->
+    <section class="slider" id="home">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>创新企业解决方案</h1>
+                    <p>我们提供最前沿的技术和咨询服务，帮助企业实现数字化转型和业务增长。</p>
+                    <a href="#contact" class="btn">立即咨询</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>专业团队支持</h1>
+                    <p>我们的专家团队拥有丰富的行业经验，为您提供定制化的解决方案。</p>
+                    <a href="#team" class="btn">了解团队</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+            <div class="container">
+                <div class="slide-content">
+                    <h1>成功客户案例</h1>
+                    <p>我们已经帮助数百家企业实现了业务目标，成为行业内的领导者。</p>
+                    <a href="#testimonials" class="btn">查看案例</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+
+    <!-- 服务区域 -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的服务</h2>
+                <p>我们提供全方位的专业服务，满足您的各种业务需求</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="nav">
-                        <ul>
-                            <li>
-                                <a class="jian" href="javascript:;">
-                                    <img src="images/img44.png" />
-                                </a>
-                            </li>
-                            <li>
-                                <img src="images/img23.png" />
-                            </li>
-                        </ul>
+                    <h3>商业咨询</h3>
+                    <p>提供专业的商业战略咨询，帮助企业优化运营流程，提高效率，实现可持续增长。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>技术开发</h3>
+                    <p>定制化软件开发、网站建设和移动应用开发，满足您的各种技术需求。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>数字营销</h3>
+                    <p>全面的数字营销策略，包括SEO、社交媒体营销、内容营销和广告投放。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>云服务</h3>
+                    <p>专业的云解决方案，包括云迁移、云架构设计和云安全管理。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>网络安全</h3>
+                    <p>全面的网络安全评估、风险管理和安全解决方案，保护您的业务数据。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>技术支持</h3>
+                    <p>24/7的技术支持和维护服务，确保您的系统稳定运行。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>关于我们</h2>
+                    <p>我们是一家成立于2010年的专业企业服务公司，总部位于北京，在上海、广州和深圳设有分支机构。我们的团队由经验丰富的专业人士组成，致力于为客户提供最优质的服务。</p>
+                    <p>我们的使命是通过创新的解决方案帮助客户实现业务目标，我们的愿景是成为行业内的领导者。我们相信，通过技术与人文的结合，可以为企业创造真正的价值。</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="200">0</div>
+                            <div class="stat-text">满意客户</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="50">0</div>
+                            <div class="stat-text">专业员工</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="12">0</div>
+                            <div class="stat-text">行业经验</div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-outline">了解更多</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="关于我们">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 团队 -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的团队</h2>
+                <p>认识我们专业且富有激情的团队成员</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="团队成员">
+                    </div>
+                    <div class="member-info">
+                        <h3>张伟</h3>
+                        <p>首席执行官</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="body">
-                    <ul>
-                        <li>
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-1.jpg" />
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-2.jpg" />
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-3.jpg" />
-                                </div>
-                            </a>
-                        </li>
-                        <li class="last">
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-4.jpg" />
-                                </div>
-                            </a>
-                        </li>
-                        <li class="last">
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-5.jpg" />
-                                </div>
-                            </a>
-                        </li>
-                        <li class="last">
-                            <a style="display:block;" href="javascript:;">
-                                <div class="img">
-                                    <img style="display: block;" src="images/hanyou-6.jpg" />
-                                </div>
-                            </a>
-                        </li>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="团队成员">
+                    </div>
+                    <div class="member-info">
+                        <h3>李娜</h3>
+                        <p>技术总监</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="团队成员">
+                    </div>
+                    <div class="member-info">
+                        <h3>王强</h3>
+                        <p>市场总监</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="团队成员">
+                    </div>
+                    <div class="member-info">
+                        <h3>赵敏</h3>
+                        <p>设计总监</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>客户评价</h2>
+                <p>听听我们的客户怎么说</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <div class="client-image">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="客户">
+                    </div>
+                    <p class="testimonial-text">"这家公司的专业服务帮助我们实现了业务转型，他们的团队非常专业且负责任，强烈推荐给任何寻求高质量服务的企业。"</p>
+                    <h4 class="client-name">陈先生</h4>
+                    <p class="client-company">ABC科技有限公司 CEO</p>
+                </div>
+                <div class="testimonial">
+                    <div class="client-image">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="客户">
+                    </div>
+                    <p class="testimonial-text">"我们与这家公司合作多年，他们始终如一地提供卓越的服务和创新解决方案，是我们值得信赖的合作伙伴。"</p>
+                    <h4 class="client-name">林女士</h4>
+                    <p class="client-company">XYZ集团 市场总监</p>
+                </div>
+                <div class="testimonial">
+                    <div class="client-image">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="客户">
+                    </div>
+                    <p class="testimonial-text">"他们的数字营销服务为我们的业务带来了显著增长，投资回报率远超我们的预期，非常满意这次合作。"</p>
+                    <h4 class="client-name">王先生</h4>
+                    <p class="client-company">123电子商务 创始人</p>
+                </div>
+                <div class="testimonial-nav">
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <p>有任何问题或需要咨询？请随时联系我们</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>地址</h3>
+                            <p>北京市朝阳区建国路88号SOHO现代城A座2001室</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>电话</h3>
+                            <a href="tel:+8610123456789">+86 10 1234 5678</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>邮箱</h3>
+                            <a href="mailto:info@company.com">info@company.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>工作时间</h3>
+                            <p>周一至周五: 9:00 - 18:00</p>
+                            <p>周六: 10:00 - 15:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">电话</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">主题</label>
+                            <select id="subject">
+                                <option value="general">一般咨询</option>
+                                <option value="sales">销售咨询</option>
+                                <option value="support">技术支持</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>关于我们</h3>
+                    <p>我们是一家专业的企业服务公司，致力于为客户提供高质量的产品和服务，帮助企业实现数字化转型和业务增长。</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> 首页</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> 服务</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> 关于我们</a></li>
+                        <li><a href="#team"><i class="fas fa-chevron-right"></i> 团队</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> 联系我们</a></li>
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="section page4 fp-section" data-anchor="about" style="height: 750px;">
-            <div class="wrapper">
-                <div class="img-wrap">
-                    <div class="img1">
-                        <img src="images/img51.png" />
-                    </div>
-					<!--
-                    <div class="img2">
-                        <img src="./images/img52.png" />
-                    </div>
-					-->
-                    <div class="img3">
-                        <img src="images/img53.png" />
-                    </div>
-					
-                    <div class="img4">
-                        <!--<img src="images/img54.png" />-->
-                    </div>
-				
+                <div class="footer-col">
+                    <h3>我们的服务</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 商业咨询</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 技术开发</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 数字营销</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 云服务</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 网络安全</a></li>
+                    </ul>
                 </div>
-                <div class="text">
-                    <h2>Djaranetwork Service Pty Ltd</h2>
-                    <p style="margin-bottom: 10px">
-						<div style="font-weight:bold;font-size:18px;" >Company Profile</div>
-						<div style="font-size:16px;" >
-					    </br />Djaranetwork Service Pty Ltd is a nationally operating telecommunications infrastructure contractor,
-                        <br />specialising in turnkey solutions for NBN (National Broadband Network) providers and related communications projects.
-                        <br />
-						</div>
-                    </p>
-                    <p style="margin-bottom: 10px">
-                        <div style="font-weight:bold;font-size:18px;" >Key Features</div>
-						<div style="font-size:16px;" >
-                        <br />With a highly skilled technical team
-                        <br />over a decade of industry experience
-                        <br />advanced equipment
-						<br />and rapid response capability
-						</div>
-                    </p>
-                    <p>
-						<div style="font-weight:bold;font-size:18px;" >NBN Accreditations </div>
-						<div style="font-size:16px;" >
-                        <br />we are a trusted partner in Australia’s telecommunications construction sector.
-						</div>
-                    </p>
-                    <p class="more">……</p>
+                <div class="footer-col">
+                    <h3>订阅通讯</h3>
+                    <p>订阅我们的电子报，获取最新行业资讯和公司动态。</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱地址" required>
+                        </div>
+                        <button type="submit" class="btn">订阅</button>
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="section page5 fp-section" data-anchor="contact" style="height: 750px;">
-            <div class="bg">
-            </div>
-            <div class="wrapper">
-              <div class="contact_us" >
-			      <p style="color: #fff;">We proudly operate across all Australian states and territories </p>
-				  <p style="color: #fff;">including key hubs:</p>
-				  <p style="color: #fff;">Western Australia (Perth and regional WA) </p>
-				  <p style="color: #fff;">New South Wales (Sydney, Newcastle) </p>
-				  <p style="color: #fff;">Victoria (Melbourne and regional VIC) </p>
-				  <p style="color: #fff;">South Australia (Adelaide) </p>
-				  <p style="color: #fff;">Tasmania (Hobart and surrounds) </p>
-              </div>
-              <div class="baidu_map" style="border-radius: 4px; overflow: hidden;">
-				  <p style="color: #fff;">We welcome inquiries from NBN providers, </p>
-				  <p style="color: #fff;">head contractors, developers,</p>
-				  <p style="color: #fff;">and municipalities looking for a reliable, experienced, </p>
-				  <p style="color: #fff;">and efficient telecom delivery partner. </p>
-				  <p style="color: #fff;"><span>Phone：</span>+61 415296322</p>
-                  <p style="color: #fff;"><span>Email：</span><a href="mailto:admin@djaranetwork.com">admin@djaranetwork.com</a></p>
-                  <p style="color: #fff;"><span>Address：</span> 45 ST GEORGES TCE PERTH WA 6000</p>
-              </div>
-            </div>
-            <div class="info">
-                <p style="text-align: center">©2023 Djaranetwork Service Pty Ltd. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2023 企业名称. 保留所有权利. | 设计制作: 企业名称</p>
             </div>
         </div>
-    </div>
-    <div class="sidebar">
-        <ul>
-            <li>
-                <a href="index.html#hero">
-                    <img src="images/img60.png" alt="">
-                </a>
-            </li>
-        </ul>
-    </div>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
-    <script type="text/javascript" src="js/addons.js"></script>
+    </footer>
+
     <script>
+        // 移动菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
         
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // 滚动时头部样式变化
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 轮播图功能
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-nav span');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        // 点击导航点切换轮播图
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // 自动轮播
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // 鼠标悬停时暂停轮播
+        const slider = document.querySelector('.slider');
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // 客户评价轮播
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const testimonialDots = document.querySelectorAll('.testimonial-nav span');
+        
+        function showTestimonial(n) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            testimonialDots.forEach(dot => dot.classList.remove('active'));
+            
+            currentTestimonial = (n + testimonials.length) % testimonials.length;
+            testimonials[currentTestimonial].classList.add('active');
+            testimonialDots[currentTestimonial].classList.add('active');
+        }
+        
+        function nextTestimonial() {
+            showTestimonial(currentTestimonial + 1);
+        }
+        
+        // 点击导航点切换评价
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(index);
+            });
+        });
+        
+        // 自动切换评价
+        setInterval(nextTestimonial, 7000);
+        
+        // 数字动画
+        function animateNumbers() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            statNumbers.forEach(statNumber => {
+                const target = +statNumber.getAttribute('data-count');
+                const count = +statNumber.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    statNumber.innerText = Math.ceil(count + increment);
+                    setTimeout(animateNumbers, 1);
+                } else {
+                    statNumber.innerText = target;
+                }
+            });
+        }
+        
+        // 滚动到关于我们部分时触发数字动画
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.querySelector('.about');
+            const aboutPosition = aboutSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (aboutPosition < screenPosition) {
+                animateNumbers();
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动菜单
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // 表单提交
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('感谢您的留言！我们会尽快与您联系。');
+                this.reset();
+            });
+        }
     </script>
 </body>
 </html>
