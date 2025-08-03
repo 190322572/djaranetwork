@@ -119,3 +119,57 @@ if (contactForm) {
 		this.reset();
 	});
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+// 获取模态框元素
+const modal = document.getElementById('serviceModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalContent = document.getElementById('modalContent');
+const closeBtn = document.querySelector('.close-btn');
+
+// 为所有View Details按钮添加点击事件
+document.querySelectorAll('.view-details-btn').forEach(button => {
+	button.addEventListener('click', function() {
+		// 获取当前卡片中的内容
+		const card = this.closest('.project-card');
+		const title = card.querySelector('h3').textContent;
+		const description = card.querySelector('.service-description').textContent;
+		const imgSrc = card.querySelector('img').src;
+		const imgAlt = card.querySelector('img').alt;
+		
+		
+		// 填充模态框内容
+		modalTitle.textContent = title;
+		modalContent.innerHTML = `
+			<img src="${imgSrc}" alt="${imgAlt}" style="width:100%; max-height:300px; object-fit:cover; border-radius:4px; margin-bottom:20px;">
+			<p>${description}</p>
+		`;
+		
+		// 显示模态框
+		modal.style.display = 'block';
+		document.body.style.overflow = 'hidden'; // 防止背景滚动
+	});
+});
+
+// 关闭模态框
+function closeModal() {
+	modal.style.display = 'none';
+	document.body.style.overflow = 'auto'; // 恢复背景滚动
+}
+
+closeBtn.addEventListener('click', closeModal);
+
+// 点击模态框外部关闭
+window.addEventListener('click', function(event) {
+	if (event.target === modal) {
+		closeModal();
+	}
+});
+
+// ESC键关闭模态框
+document.addEventListener('keydown', function(event) {
+	if (event.key === 'Escape' && modal.style.display === 'block') {
+		closeModal();
+	}
+});
+});
