@@ -421,6 +421,9 @@ nav ul li a:hover::after {
 }
 */
 /* Services Section */
+.services {
+	padding: 50px 0;
+}
 .services-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -473,7 +476,7 @@ nav ul li a:hover::after {
 }
 /* About Section */
 .about {
-	padding: 100px 0;
+	padding: 50px 0;
 	position: relative;
 	overflow: hidden;
 }
@@ -538,6 +541,9 @@ nav ul li a:hover::after {
 }
 
 /* Projects Section */
+.projects {
+	padding: 50px 0;
+}
 .projects-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -545,85 +551,113 @@ nav ul li a:hover::after {
 }
 
 /* 基础卡片样式 */
-    .project-card {
-        position: relative;
-        height: 300px;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    
-    .project-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-    }
-    
-    /* 透明标题效果 */
-    .project-overlay h3 {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        right: 20px;
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 600;
-        text-shadow: 
-            0 1px 3px rgba(0,0,0,0.8),
-            0 1px 1px rgba(0,0,0,0.5);
-        background-color: rgba(0,0,0,0.5); /* 半透明背景 */
-        padding: 12px 20px;
-        border-radius: 4px;
-        backdrop-filter: blur(2px); /* 毛玻璃效果 */
-        margin: 0;
-        transition: all 0.3s ease;
-    }
-    
-    /* 悬停时标题效果增强 */
-    .project-card:hover .project-overlay h3 {
-        background-color: rgba(0,0,0,0.7);
-        text-shadow: 0 2px 5px rgba(0,0,0,0.9);
-    }
-    
-    /* 覆盖层样式 */
-    .project-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
-    }
-    
-    /* 其他元素样式保持不变 */
-    .project-overlay p {
-        color: white;
-        margin-bottom: 15px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease;
-    }
-    
-    .project-overlay .btn {
-        align-self: flex-start;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.3s ease 0.1s;
-    }
-    
-    .project-card:hover .project-overlay p,
-    .project-card:hover .project-overlay .btn {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.project-card {
+	position: relative;
+	height: 300px;
+	overflow: hidden;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.project-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+
+/* 透明标题效果 */
+.project-overlay h3 {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	color: white;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-shadow: 
+		0 1px 3px rgba(0,0,0,0.8),
+		0 1px 1px rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.5); /* 半透明背景 */
+	padding: 12px 20px;
+	border-radius: 4px;
+	backdrop-filter: blur(2px); /* 毛玻璃效果 */
+	margin: 0;
+	transition: all 0.3s ease;
+}
+
+/* 悬停时标题效果增强 */
+.project-card:hover .project-overlay h3 {
+	background-color: rgba(0,0,0,0.7);
+	text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+}
+
+/* 覆盖层样式 */
+.project-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 20px;
+	background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+}
+
+/* 其他元素样式保持不变 */
+.project-overlay p {
+	color: white;
+	margin-bottom: 15px;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.3s ease;
+}
+
+.project-overlay .btn {
+	align-self: flex-start;
+	opacity: 0;
+	transform: translateY(20px);
+	transition: all 0.3s ease 0.1s;
+}
+
+.project-card:hover .project-overlay p,
+.project-card:hover .project-overlay .btn {
+	opacity: 1;
+	transform: translateY(0);
+}
+	
+/* Why Choose Us Section */
+.features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 30px;
+}
+
+.feature {
+	text-align: center;
+	padding: 30px 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+	font-size: 40px;
+	color: #3498db;
+	margin-bottom: 20px;
+}
+
+.feature h3 {
+	font-size: 22px;
+	margin-bottom: 15px;
+	color: #2c3e50;
+}	
 
 /* Partners Section */
 .partners {
+	padding: 50px 0;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -694,7 +728,6 @@ nav ul li a:hover::after {
 /* Contact Section */
 .contact {
 	padding: 100px 0;
-	background-color: var(--light);
 }
 
 .contact-container {
