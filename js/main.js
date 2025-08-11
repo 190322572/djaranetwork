@@ -176,8 +176,6 @@ document.addEventListener('keydown', function(event) {
 
 
 
-
-
 function openModal(modalId) {
 	document.getElementById(modalId).classList.add('show');
 	document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
