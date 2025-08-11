@@ -174,8 +174,7 @@ document.addEventListener('keydown', function(event) {
 });
 });
 
-
-
+//为什么选择我们弹窗start
 function openModal(modalId) {
 	document.getElementById(modalId).classList.add('show');
 	document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
@@ -204,3 +203,4 @@ document.addEventListener('keydown', function(event) {
 		});
 	}
 });
+//为什么选择我们弹窗end
