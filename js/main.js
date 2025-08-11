@@ -173,3 +173,36 @@ document.addEventListener('keydown', function(event) {
 	}
 });
 });
+
+
+
+
+
+function openModal(modalId) {
+	document.getElementById(modalId).classList.add('show');
+	document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+}
+
+function closeModal(modalId) {
+	document.getElementById(modalId).classList.remove('show');
+	document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+	if (event.target.classList.contains('modal')) {
+		event.target.classList.remove('show');
+		document.body.style.overflow = 'auto';
+	}
+}
+
+// Close modal with ESC key
+document.addEventListener('keydown', function(event) {
+	if (event.key === 'Escape') {
+		const modals = document.querySelectorAll('.modal.show');
+		modals.forEach(modal => {
+			modal.classList.remove('show');
+			document.body.style.overflow = 'auto';
+		});
+	}
+});
