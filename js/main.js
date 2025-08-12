@@ -133,7 +133,7 @@ document.querySelectorAll('.view-details-btn').forEach(button => {
 		// 获取当前卡片中的内容
 		const card = this.closest('.project-card');
 		const title = card.querySelector('h3').textContent;
-		const description = card.querySelector('.service-description').textContent;
+		const description = card.querySelector('.service-description').innerHTML;
 		const imgSrc = card.querySelector('img').src;
 		const imgAlt = card.querySelector('img').alt;
 		
@@ -175,32 +175,82 @@ document.addEventListener('keydown', function(event) {
 });
 
 //为什么选择我们弹窗start
-function openModal(modalId) {
-	document.getElementById(modalId).classList.add('show');
-	document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+// Modal content for Why Choose Us section
+const whyChooseModalContent = {
+    modal1: {
+        title: "Comprehensive 9-Service Delivery Model",
+        content: `
+            <p>We provide end-to-end infrastructure services across 9 specialised domains, from fibre deployment, HDD boring, network fault response, to mining and smart infrastructure. This integrated service model reduces delays, cuts costs, and ensures high performance at every stage — no subcontracting needed.</p>
+        `
+    },
+    modal2: {
+        title: "Proven Telecommunications & Mining Expertise",
+        content: `
+            <p>Our leadership and crews bring over a decade of field experience across NBN, Opticomm, Superloop, and major mining clients. Whether it's FTTP, directional drilling under roads or mining camp comms, we have a verified track record of delivering compliant, complex projects with zero non-conformances.</p>
+        `
+    },
+    modal3: {
+        title: "Fast Response, 24/7 Support & Emergency Crews",
+        content: `
+            <p>Through our dedicated operations team and in-house fleet, we mobilise technical teams and machinery within 24 hours for urgent maintenance, fault repair, or emergency network rerouting. Clients trust us to be responsive, ready, and effective — anytime, anywhere.</p>
+        `
+    },
+    modal4: {
+        title: "Certified, Safety-Inducted, and Regulatory Compliant",
+        content: `
+            <p>All our staff hold White Cards, Telstra/NBN accreditations, confined space tickets, traffic control licenses, and site-specific inductions including mining. WHS compliance and audit readiness are built into our operating standards, ensuring full legal and technical compliance.</p>
+        `
+    },
+    modal5: {
+        title: "In-House Equipment for Every Job",
+        content: `
+            <p>We own and operate all major tools including vacuum trucks, HDD rigs, trenchers, fusion splicers, and OTDR testers — eliminating third-party risk, improving schedule control, and maintaining quality across every worksite.</p>
+        `
+    },
+    modal6: {
+        title: "Trusted by Tier-1 Clients in Telco & Industry",
+        content: `
+            <p>We are a trusted subcontractor to telcos like Genus, Lightning Broadband, Opticomm, and Superloop, as well as clients in energy, local government, and mining. Our delivery record is clean — with consistent on-time performance and client satisfaction.</p>
+        `
+    },
+    modal7: {
+        title: "Smart Project Management with Clear Accountability",
+        content: `
+            <p>Our site supervisors and project managers oversee progress, safety, documentation, and client liaison from start to finish. Each project is delivered with detailed reporting, redline as-builts, GIS updates, and compliance packages — ensuring transparency and results.</p>
+        `
+    },
+    modal8: {
+        title: "Culturally-Rooted & Community-Focused",
+        content: `
+            <p>DjaraNetwork was founded with Indigenous values and a commitment to inclusive employment. We prioritise local hiring, mentorship, and capacity building in all communities we serve — while delivering best-in-class infrastructure outcomes.</p>
+        `
+    }
+};
+
+// Open Why Choose Us modal
+function openWhyChooseModal(modalId) {
+    const modal = document.getElementById('whyChooseModal');
+    const modalTitle = document.getElementById('whyChooseModalTitle');
+    const modalContent = document.getElementById('whyChooseModalContent');
+    
+    modalTitle.textContent = whyChooseModalContent[modalId].title;
+    modalContent.innerHTML = whyChooseModalContent[modalId].content;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
 }
 
-function closeModal(modalId) {
-	document.getElementById(modalId).classList.remove('show');
-	document.body.style.overflow = 'auto'; // Re-enable scrolling
+// Close Why Choose Us modal
+function closeWhyChooseModal() {
+    document.getElementById('whyChooseModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
 }
 
 // Close modal when clicking outside of it
 window.onclick = function(event) {
-	if (event.target.classList.contains('modal')) {
-		event.target.classList.remove('show');
-		document.body.style.overflow = 'auto';
-	}
+    const modal = document.getElementById('whyChooseModal');
+    if (event.target == modal) {
+        closeWhyChooseModal();
+    }
 }
-
-// Close modal with ESC key
-document.addEventListener('keydown', function(event) {
-	if (event.key === 'Escape') {
-		const modals = document.querySelectorAll('.modal.show');
-		modals.forEach(modal => {
-			modal.classList.remove('show');
-			document.body.style.overflow = 'auto';
-		});
-	}
-});
 //为什么选择我们弹窗end

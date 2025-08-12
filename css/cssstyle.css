@@ -473,6 +473,25 @@ nav ul li a:hover::after {
 	font-size: 22px;
 	margin-bottom: 10px;
 }
+
+.modal-body ul {
+    list-style-type: none; /* 移除默认的项目符号 */
+    padding-left: 0;
+}
+
+.modal-body li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.modal-body li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3498db; /* 可以设置颜色 */
+    font-weight: bold;
+}
 /* About Section */
 .about {
 	padding: 50px 0;
@@ -628,157 +647,73 @@ nav ul li a:hover::after {
 }
 	
 /* Why Choose Us Section */
-.features {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	gap: 30px;
-}
-
-.feature {
-	text-align: center;
-	padding: 30px 20px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.feature-icon {
-	font-size: 40px;
-	color: #3498db;
-	margin-bottom: 20px;
-}
-
-.feature h3 {
-	font-size: 22px;
-	margin-bottom: 15px;
-	color: #2c3e50;
-}	
-
-
-
-
- /* Features Grid */
-.features {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	gap: 30px;
-	margin-top: 40px;
-}
-
-.feature {
-	background: #fff;
-	border-radius: 8px;
-	padding: 25px;
-	box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	cursor: pointer;
-}
-
-.feature:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.feature-icon {
-	font-size: 2.5rem;
-	color: #2a7fba;
-	margin-bottom: 15px;
-}
-
-.feature h3 {
-	margin: 0 0 15px 0;
-	color: #333;
-	font-size: 1.2rem;
-}
-
-.view-more {
-	color: #2a7fba;
-	font-weight: 600;
-	display: inline-block;
-	margin-top: 10px;
-}
-
-/* Modal Styles */
 .modal {
-	display: none;
-	position: fixed;
-	z-index: 1000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.5);
-	opacity: 0;
-	transition: opacity 0.3s ease;
-}
-
-.modal.show {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	opacity: 1;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    overflow: auto;
 }
 
 .modal-content {
-	background-color: #fff;
-	margin: auto;
-	padding: 30px;
-	border-radius: 10px;
-	width: 80%;
-	max-width: 600px;
-	max-height: 80vh;
-	overflow-y: auto;
-	position: relative;
-	box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-	animation: modalopen 0.3s ease;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
 }
 
-@keyframes modalopen {
-	from {transform: scale(0.9); opacity: 0;}
-	to {transform: scale(1); opacity: 1;}
+.close-btn {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.close {
-	position: absolute;
-	right: 25px;
-	top: 15px;
-	font-size: 28px;
-	font-weight: bold;
-	color: #aaa;
-	cursor: pointer;
+.close-btn:hover {
+    color: #333;
 }
 
-.close:hover {
-	color: #333;
-}
-
-.modal-header {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-	padding-bottom: 15px;
-	border-bottom: 1px solid #eee;
-}
-
-.modal-icon {
-	font-size: 2rem;
-	color: #2a7fba;
-	margin-right: 15px;
-}
-
-.modal-header h3 {
-	margin: 0;
-	color: #333;
+.modal-title {
+    margin-bottom: 20px;
+    color: #2c3e50;
 }
 
 .modal-body {
-	padding: 10px 0;
+    line-height: 1.6;
 }
 
-.modal-body p {
-	color: #555;
-	line-height: 1.6;
-	margin: 0;
+.modal-body ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+/* Feature hover effect */
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.view-more {
+    color: #3498db;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 /* Partners Section */
